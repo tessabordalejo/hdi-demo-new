@@ -1,0 +1,46 @@
+<div class="blog-header">
+  <div class="wrap">
+    <h1>Outputs</h1>
+  </div>
+</div>
+
+<section class="cards-section">
+  <div class="section__inner">
+    <div class="card-grid">
+
+      {% for post in site.posts limit:3 %}
+        <article class="card">
+          <a href="{{ post.url | relative_url }}" class="card__link-wrap">
+
+            {% if post.image %}
+              <div class="card__thumb">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+              </div>
+            {% endif %}
+
+            <div class="card__body">
+              <div class="card__meta">
+                <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+
+                {% if post.category %}
+                  <span class="card__tag">{{ post.category }}</span>
+                {% elsif post.categories and post.categories.size > 0 %}
+                  <span class="card__tag">{{ post.categories[0] }}</span>
+                {% endif %}
+              </div>
+
+              <h3 class="card__title">{{ post.title }}</h3>
+
+              {% if post.excerpt %}
+                <p class="card__excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+              {% endif %}
+
+              <span class="card__read-more">Read More →</span>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
