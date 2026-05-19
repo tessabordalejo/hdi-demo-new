@@ -1424,3 +1424,6 @@ p:last-child {
     min-height: 0;
   }
 }
+.connect-feature__text {
+  text-align: center;
+}
